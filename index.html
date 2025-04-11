@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS Game!</title>
+</head>
+<script>
+    CEILING = 3; // 3 choices max
+
+    // Map nums to choices
+    const map = new Map();
+    map.set(0, "rock");
+    map.set(1, "paper");
+    map.set(2, "scissors");
+
+    // get a choice
+    function get_computer_choice(){
+        let choice = Math.floor(Math.random() * CEILING);
+        return map.get(choice);
+    }
+
+    function get_human_choice(){
+        let choice = prompt("rock, paper, or scissors?");
+        return choice;
+    }
+
+    function play_game(){
+        let round_count = 0;
+
+        let human_score = 0;
+        let computer_score = 0;
+
+
+        
+
+        function play_round(human_choice, computer_choice){
+            
+            let not_a_tie = true;
+            let human_wins = false;
+
+            
+            if (human_choice == computer_choice){
+                not_a_tie = false;
+            }
+            else if (human_choice == "rock"){
+                if (computer_choice == "paper"){
+                    computer_score++;
+                }
+                else if (computer_choice == "scissors"){
+                    human_score++;
+                    human_wins = true;
+                }
+            }
+            else if (human_choice == "paper"){
+                // computer is rock, or scissors
+                if (computer_choice == "rock"){
+                    human_score++;
+                    human_wins = true;
+                }
+                else if (computer_choice == "scissors") {
+                    computer_score++;
+                }
+            } else if ( human_choice == "scissors" ){ 
+
+                if (computer_choice == "paper"){
+                    human_score++;
+                    human_wins = true;
+                } else if ( computer_choice == "rock") {
+                    computer_score++;
+                }
+
+            }
+
+            
+
+            if (not_a_tie){
+
+                if (human_wins){
+                    console.log(`You win! ${human_choice} beats ${computer_choice}.`);
+                } else {
+                    console.log(`You lose. ${human_choice} loses to ${computer_choice}.`)
+                }
+                
+                round_count++;
+            } else {
+                console.log(`Tie round! ${human_choice} ties with ${computer_choice}.`);
+            }
+
+        }
+
+        while (round_count < 5){
+            let human_choice = get_human_choice().toLowerCase();
+            let computer_choice = get_computer_choice().toLowerCase();
+            play_round(human_choice, computer_choice);
+        }
+
+        if (human_score > computer_score){
+            console.log("You win!");
+        }
+        else if (human_score < computer_score){
+            console.log("You lost :(")
+        }
+        else if (human_score == computer_score){
+            console.log("Tie game.")
+        }
+
+    }
+
+    play_game();
+        
+
+    
+
+</script>
+<body>
+
+    <h1>Open the console to play rock paper scissors!</h1>
+    
+</body>
+</html>
