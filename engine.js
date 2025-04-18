@@ -57,14 +57,14 @@ function play_round(human_choice) {
   let msg = "";
   if (not_a_tie) {
     if (human_wins) {
-      msg = (`You win! ${human_choice} beats ${computer_choice}.`);
+      msg = (`Round won! ${human_choice} beats ${computer_choice}.`);
     } else {
-      msg = (`You lose. ${human_choice} loses to ${computer_choice}.`);
+      msg = (`Round lost. ${human_choice} loses to ${computer_choice}.`);
     }
 
 
   } else {
-    msg = (`Tie round! ${human_choice} ties with ${computer_choice}.`);
+    msg = (`Tie round. ${human_choice} ties with ${computer_choice}.`);
   }
 
   update_display(msg);
@@ -73,9 +73,9 @@ function play_round(human_choice) {
 
 function determine_outcome(human_score, computer_score) {
     if (human_score > computer_score) {
-      return "You won!";
+      return "You won the game!";
     } else if (human_score < computer_score) {
-      return "You lost.";
+      return "You lost this time.";
     } else if (human_score === computer_score) {
       return "Tie game.";
     }
@@ -95,7 +95,7 @@ let human_score    = 0;
 function clear_display(first_half){
   computer_score = 0;
   human_score = 0;
-  update_display(`${first_half} Make a choice to start a new game.`);
+  update_display(`${first_half} Make a choice to play again.`);
 }
 
 function update_display(new_msg) {

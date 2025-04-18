@@ -3,20 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RPS Game!</title>
+    <title>Rock Paper Scissors</title>
     <script src="./engine.js" defer></script>
     <link  rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <h1>Rock paper scissors!</h1>
-
-    <h2 class="status"></h2>
+    
     <div id="Display">
-      <h1>Scoreboard!</h1>
-      <h2 class="message">Make a choice to start the game!</h2>
-      <h2 class="player_score">You: 0</h2>
-      <h2 class="computer_score">Computer: 0</h2>
+      <div class="info">
+        <h1>Scoreboard</h1>
+        <h2 class="message">Make a choice to start the game!</h2>
+      </div>
+      
+      <div class="scores">        
+        <h2 class="player_score">You: 0</h2>
+        <h2 class="computer_score">Computer: 0</h2>
+      </div>
     </div>
 
     <div id="game">

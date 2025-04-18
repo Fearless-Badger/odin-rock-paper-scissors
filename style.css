@@ -1,3 +1,38 @@
-/*
-    I am a css file.
-*/
+html{
+    box-sizing: border-box;
+    font-family: 'Roboto';
+}
+
+*,
+*::before,
+*::after{
+    box-sizing: inherit;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #D29F80;
+}
+
+#Display{
+    background-color: #735557;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.info{
+    flex-basis: 300px;
+}
+
+#game{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
