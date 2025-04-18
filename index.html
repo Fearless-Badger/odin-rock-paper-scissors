@@ -99,9 +99,6 @@
       //
       let round_count = 0;
 
-      let human_score = 0;
-      let computer_score = 0;
-
       if (not_a_tie) {
         if (human_wins) {
           console.log(`You win! ${human_choice} beats ${computer_choice}.`);
@@ -118,12 +115,18 @@
     // define listeners for buttons
     const container = document.querySelector("#game");
 
-    const children = Array.from(container.childNodes);
-    console.log(children);
+    const buttons = container.querySelectorAll("button");
 
-    const rock = children[0];
-    const paper = children[1];
-    const scissors = children[2];
+    const rock = buttons[0];
+    const paper = buttons[1];
+    const scissors = buttons[2];
+
+    function handle_hit(button_name) {
+      console.log(button_name);
+    }
+    rock.addEventListener("click", () => handle_hit("rock"));
+    paper.addEventListener("click", () => handle_hit("paper"));
+    scissors.addEventListener("click", () => handle_hit("scissors"));
 
     
 
