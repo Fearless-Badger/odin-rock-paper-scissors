@@ -12,7 +12,7 @@
     <h2 class="status"></h2>
     <div id="Display">
       <h1>Scoreboard!</h1>
-      <h2 class="message"></h2>
+      <h2 class="message">Make a choice to start the game!</h2>
       <h2 class="player_score"></h2>
       <h2 class="computer_score"></h2>
     </div>
@@ -44,6 +44,7 @@
       let choice = prompt("rock, paper, or scissors?");
       return choice;
     }
+    
 
     function play_round(human_choice) {
       //
@@ -79,8 +80,25 @@
         }
       }
 
-      function determine_outcome(human_score, computer_score) {
-        if (human_score < computer_score) {
+      let msg = "";
+      if (not_a_tie) {
+        if (human_wins) {
+          msg = (`You win! ${human_choice} beats ${computer_choice}.`);
+        } else {
+          msg = (`You lose. ${human_choice} loses to ${computer_choice}.`);
+        }
+
+
+      } else {
+        msg = (`Tie round! ${human_choice} ties with ${computer_choice}.`);
+      }
+
+      update_display(msg);
+
+    }
+
+    function determine_outcome(human_score, computer_score) {
+        if (human_score > computer_score) {
           return "You win!";
         } else if (human_score < computer_score) {
           return "You lost :(";
@@ -88,27 +106,33 @@
           return "Tie game.";
         }
       }
-    }
 
     // display and output
-    const message_elem = document.querySelector("message");
-    const player_score_elem = document.querySelector("player_score");
-    const comp_score_elem = document.querySelector("computer_score");
+    const message_elem = document.querySelector(".message");
+    const player_score_elem = document.querySelector(".player_score");
+    const comp_score_elem = document.querySelector(".computer_score");
 
-    function update_display(computer_score, human_score, message) {
-      //
-      let round_count = 0;
 
-      if (not_a_tie) {
-        if (human_wins) {
-          console.log(`You win! ${human_choice} beats ${computer_choice}.`);
-        } else {
-          console.log(`You lose. ${human_choice} loses to ${computer_choice}.`);
-        }
+    // Track game state
 
-        round_count++;
-      } else {
-        console.log(`Tie round! ${human_choice} ties with ${computer_choice}.`);
+    let computer_score = 0;
+    let human_score    = 0;
+
+    function clear_display(first_half){
+      computer_score = 0;
+      human_score = 0;
+      update_display(`${first_half} Make a choice to start a new game!`);
+    }
+
+    function update_display(new_msg) {
+      
+      message_elem.textContent = new_msg;
+      player_score_elem.textContent = human_score;
+      comp_score_elem.textContent = computer_score;
+
+      if (human_score >= 5 || computer_score >= 5){
+        let msg = determine_outcome(human_score, computer_score);
+        clear_display(msg);
       }
     }
 
@@ -122,13 +146,13 @@
     const scissors = buttons[2];
 
     function handle_hit(button_name) {
-      console.log(button_name);
+      play_round(button_name);
     }
     rock.addEventListener("click", () => handle_hit("rock"));
     paper.addEventListener("click", () => handle_hit("paper"));
     scissors.addEventListener("click", () => handle_hit("scissors"));
 
-    
+
 
   </script>
 </html>
