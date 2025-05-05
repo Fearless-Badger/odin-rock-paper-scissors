@@ -57,14 +57,14 @@ function play_round(human_choice) {
   let msg = "";
   if (not_a_tie) {
     if (human_wins) {
-      msg = (`Round won! ${human_choice} beats ${computer_choice}.`);
+      msg = (`Round win! ${human_choice} beats ${computer_choice}.`);
     } else {
-      msg = (`Round lost. ${human_choice} loses to ${computer_choice}.`);
+      msg = (`Round loss. ${human_choice} loses to ${computer_choice}.`);
     }
 
 
   } else {
-    msg = (`Tie round. ${human_choice} ties with ${computer_choice}.`);
+    msg = (`Tie round. ${human_choice} matches ${computer_choice}.`);
   }
 
   update_display(msg);
